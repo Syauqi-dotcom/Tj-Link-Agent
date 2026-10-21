@@ -1,4 +1,0 @@
-# Line ending deterministik di semua mesin (core.autocrlf tidak lagi berpengaruh).
-* text=auto eol=lf
-# Git hook dieksekusi oleh sh: wajib LF.
-githooks/* text eol=lf
