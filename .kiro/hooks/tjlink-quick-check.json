@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "TJLINK Quick Check (PostToolUse)",
+      "trigger": "PostToolUse",
+      "description": "Setelah agent mengedit file, lint + syntax check file itu saja (cepat). Gagal = exit 1 dengan detail di stderr sehingga agent langsung tahu; sukses = satu baris ringkas.",
+      "matcher": "^(fs_write|fs_append|str_replace)$",
+      "action": {
+        "type": "command",
+        "command": "node .kiro/hooks/scripts/verify-change.js --mode quick --hook"
+      }
+    }
+  ]
+}

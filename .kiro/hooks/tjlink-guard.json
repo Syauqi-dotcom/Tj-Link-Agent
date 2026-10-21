@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "TJLINK Guard (PreToolUse)",
+      "trigger": "PreToolUse",
+      "description": "Memblokir aksi berbahaya sebelum dijalankan: perintah shell berisiko (push, reset --hard, deploy, akses DB, dll.), penulisan ke guardrail/evidence/secret, dan penulisan di luar workspace. Exit 2 = blokir dengan alasan di stderr; fail-closed; semua keputusan dicatat ke .kiro/audit/agent-actions.jsonl.",
+      "matcher": "^(fs_write|fs_append|str_replace|delete_file|execute_pwsh|execute_bash)$",
+      "action": {
+        "type": "command",
+        "command": "node .kiro/hooks/scripts/guard.js"
+      }
+    }
+  ]
+}

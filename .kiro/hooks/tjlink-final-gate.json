@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "TJLINK Final Gate (Stop)",
+      "trigger": "Stop",
+      "description": "Saat agent selesai, jalankan ulang gate final (lint + test terkait + git diff --check) secara independen dan tulis evidence. Bila merah, minta agent melanjutkan via {\"decision\":\"block\"} dengan batas anti-loop; diam bila tidak ada perubahan atau state sudah terverifikasi hijau.",
+      "action": {
+        "type": "command",
+        "command": "node .kiro/hooks/scripts/verify-change.js --mode final --hook --on-stop"
+      }
+    }
+  ]
+}

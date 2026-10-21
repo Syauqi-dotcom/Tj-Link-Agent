@@ -1,0 +1,7 @@
+#!/bin/sh
+# TJLINK hard gate lokal: commit DITOLAK bila gate merah (lint + seluruh test + diff check).
+# Lapisan ini tidak bergantung pada AI agent maupun IDE.
+# Aktifkan sekali per clone (dijalankan manusia, bukan agent):
+#   git config core.hooksPath githooks
+# Catatan: memeriksa working tree; pemeriksaan otoritatif tetap di CI (server Git sendiri).
+exec node .kiro/hooks/scripts/verify-change.js --mode ci --trigger pre-commit
